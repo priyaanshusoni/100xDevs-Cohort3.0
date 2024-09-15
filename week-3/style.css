@@ -1,0 +1,90 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.main-container{
+    
+    
+    background-color: grey;
+    position: absolute; /* Position the element absolutely */
+  top: 20px; /* Distance from the top of the screen */
+  left: 50%; /* Position it 50% from the left side of the screen */
+  transform: translateX(-50%); /* Move it left by 50% of its width */
+  /* Optional styling */
+  width: 80%; /* Adjust width as needed */
+  max-width: 600px; /* Maximum width for the container */
+
+  height: 500px;
+  border-radius:15px;
+
+ 
+}
+
+
+
+.input{
+   padding-top: 30px;
+   
+   border-radius: 5px;
+   text-align: center;
+   color: rgb(0, 0, 0);
+    width: 100%; /* Make the input box take full width of the container */
+  max-width: 300px; /* Optional: Set a maximum width for the input box */
+  margin: 0 auto; /* Auto margins to center the input box */
+  display: block; 
+  
+  
+}
+
+#addtodo{
+    margin-left: 200px;
+    width: 200px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+
+.task {
+    display: block; /* Align items in a row */
+    align-items: center; /* Vertically center the items */
+    justify-content: space-between; /* Add space between elements */
+    padding: 10px; /* Add some padding */
+    border-bottom: 1px solid #ccc; /* Optional: Add a bottom border for separation */
+    margin-bottom: 5px; /* Optional: Space between tasks */
+
+  }
+  
+  .task-checkbox {
+    margin-right: 10px; /* Add some space after the checkbox */
+  }
+  
+  .task-text {
+    flex-grow: 1; /* Take up available space between the checkbox and buttons */
+    margin-right: 10px; /* Add some space after the text */
+  }
+  
+  .edit-btn, .delete-btn {
+    margin-left: 5px; /* Space between the buttons */
+    padding: 5px 10px; /* Button padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    
+  }
+  
+  .edit-btn {
+    background-color: #f0ad4e; /* Edit button color */
+    border: none; /* Remove border */
+    color: white; /* Button text color */
+  }
+  
+  .delete-btn {
+    background-color: #d9534f; /* Delete button color */
+    border: none; /* Remove border */
+    color: white; /* Button text color */
+  }
+  
