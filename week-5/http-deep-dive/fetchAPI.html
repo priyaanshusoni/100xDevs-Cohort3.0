@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        posts
+
+         <div id="post">
+             
+         </div>
+        
+       <script>
+         async function getrecentPost(){
+
+const response =  await axios.get("https://jsonplaceholder.typicode.com/posts/1");   //promise  
+
+console.log(response.data.title); //.data is provided by axios 
+document.getElementById("post").innerHTML = response.data.title;
+
+}
+
+ getrecentPost();
+
+       </script>
+    </body>
+</html>
+
+

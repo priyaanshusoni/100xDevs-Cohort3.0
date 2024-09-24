@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <input type="text" id="a" placeholder="first-value">
+        <input type="text" id="b" placeholder="second-value">
+
+        <div id = "sum">
+
+
+
+        </div>
+        
+
+       <button onclick="sendRequest()">Send Sum Request</button>
+
+
+        <script>
+       
+        async function sendRequest(){
+              
+               
+              const response = await  axios.post("http://localhost:3000/sum" , {
+                 a: document.getElementById("a").value,
+                 b: document.getElementById("b").value
+               })
+
+
+          
+        
+
+
+           
+         }
+
+
+        </script>
+    </body>
+</html>
+
+//  I put this file in a public folder which I wanted to serve over a HTTP server 
+// using npx serve  
+// now after usig npx serve it hosted my file over a internal network 
+//
