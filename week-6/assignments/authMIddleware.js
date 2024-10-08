@@ -20,7 +20,7 @@ app.post("/signup",function(req,res){
 
     for(let i=0;i<users.length;i++){
         if(users[i].username==username){
-            res.json({
+           return  res.json({
                 msg: "User Already Exists!"
             })
         }
@@ -51,12 +51,13 @@ app.post("/signin",function(req,res){
     const password = req.body.password;
 
     const token = jwt.sign({
-        username: username
+        username: username,
+        passowrd : password,
     },jwtSecret);
 
     for(let i=0;i<users.length;i++){
         if(users[i].username==username && users[i].password==password){
-            res.json({
+         return    res.json({
                 token
             })
         }
@@ -78,11 +79,11 @@ function auth(req, res, next) {
     if(decodedInfromation){
         req.username = decodedInfromation.username;
         req.password = decodedInfromation.password;
-        next();
+      return next();
     }
 
     else{
-         res.send("User Not Exists")
+       return   res.send("User Not Exists")
     }
 }
 
@@ -90,6 +91,8 @@ app.get("/me", auth, (req, res) => {
     const username = req.username;
     const passowrd = req.passowrd;
 
+    console.log(username);
+    console.log(passowrd);
     res.send({
        username,
        passowrd
@@ -98,7 +101,7 @@ app.get("/me", auth, (req, res) => {
 
 function logger(req,res,next){
     console.log(req.method + "Request came");
-    next();
+   return next();
 }
         
 
