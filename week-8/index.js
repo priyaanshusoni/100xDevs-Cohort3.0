@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const  userRouter  = require("./routes/userRouter");
 const  courseRouter  = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
