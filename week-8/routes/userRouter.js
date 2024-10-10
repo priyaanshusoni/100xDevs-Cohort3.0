@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const {z} = require("zod");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const {userMiddleware} = require("../middleware/user");
 dotenv.config();
 const JWT_USER_SECRET = process.env.JWT_USER_SECRET;
 
@@ -99,7 +100,7 @@ userRouter.post("/signin",async function(req,res){
 
 
 //to purchase a course
-userRouter.post("/purchases",function(req,res){
+userRouter.post("/purchases",userMiddleware,function(req,res){
     res.json({
         message : "purchase endpoint"
     })
