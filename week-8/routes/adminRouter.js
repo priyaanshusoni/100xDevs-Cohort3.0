@@ -1,10 +1,11 @@
 const express = require("express");
 const Router = express.Router;
-const {AdminModel} = require("../db")
+const {AdminModel,CourseModel} = require("../db")
 const adminRouter = Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const {adminMiddleware} = require("../middleware/admin");
 dotenv.config();
 const JWT_ADMIN_SECRET = process.env.JWT_ADMIN_SECRET;
 
@@ -94,11 +95,40 @@ adminRouter.post("/signin", async function(req,res){
 })
 
 
-adminRouter.post("/course",function(req,res){
-    res.json({
-        message : "admin create course endpoint"
+adminRouter.post("/course",adminMiddleware,async function(req,res){
+   
+      const adminId = req.adminId;
+      const {title,description , price , imageURL} = req.body;
+
+
+  if(!title || !description || !price || !imageURL){
+    return res.status(400).json({
+        message : "Please add required info for the course"
     })
+  }
+
+
+      await CourseModel.create({
+        title: title,
+        description : description,
+        imageURL : imageURL,
+        price : price,
+        creatorId : adminId
+
+
+      })
+
+      return res.status(200).json({
+        message : "Course Succesfully added!"
+      })
 })
+
+
+
+
+
+
+
 adminRouter.put("/course",function(req,res){
     res.json({
         message : "admin update course endpoint"
