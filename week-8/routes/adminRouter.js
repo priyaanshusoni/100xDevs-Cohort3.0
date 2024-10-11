@@ -96,31 +96,80 @@ adminRouter.post("/signin", async function(req,res){
 
 
 adminRouter.post("/course",adminMiddleware,async function(req,res){
+
+    
    
       const adminId = req.adminId;
       const {title,description , price , imageURL} = req.body;
 
 
-  if(!title || !description || !price || !imageURL){
-    return res.status(400).json({
-        message : "Please add required info for the course"
-    })
-  }
+      try{
+        if(!title || !description || !price || !imageURL){
+            return res.status(400).json({
+                message : "Please add required info for the course"
+            })
+          }
+        
+        
+              await CourseModel.create({
+                title: title,
+                description : description,
+                imageURL : imageURL,
+                price : price,
+                creatorId : adminId
+        
+        
+              })
+        
+              return res.status(200).json({
+                message : "Course Succesfully added!"
+              })
+      }catch(error){
+        return res.json({
+            message : error
+        })
+      }
+
+  
+})
 
 
-      await CourseModel.create({
-        title: title,
-        description : description,
-        imageURL : imageURL,
-        price : price,
-        creatorId : adminId
 
 
+
+
+
+adminRouter.put("/course",adminMiddleware,async function(req,res){
+   const adminId = req.adminId;
+
+   const {title,description , price , imageURL , courseId} = req.body;
+
+
+ try{
+    const course =   await CourseModel.findOneAndUpdate({
+        _id : courseId,
+        creatorId : adminId // this check is important it will make sure the person can only update his own course not anyone else course
+
+      },{
+       title : title,
+       description : description,
+       price : price,
+       imageURL : imageURL,
+       
       })
 
       return res.status(200).json({
-        message : "Course Succesfully added!"
+        message : "Course Succesfully updated!",
+        courseId : course._id
       })
+ } catch(error){
+    return res.json({
+        message : error
+    })
+ }
+ 
+    
+
 })
 
 
@@ -129,15 +178,41 @@ adminRouter.post("/course",adminMiddleware,async function(req,res){
 
 
 
-adminRouter.put("/course",function(req,res){
-    res.json({
-        message : "admin update course endpoint"
+adminRouter.get("/course",adminMiddleware,async function(req,res){
+    const adminId = req.adminId;
+
+
+ 
+ 
+  try{
+
+    const course =   await CourseModel.find({
+        creatorId : adminId // this check is important it will make sure the person can only update his own course not anyone else course
+
+      })
+
+      // console.log(course);
+
+      if(course){
+          return res.status(200).json({
+              course
+            })
+      }
+
+      else{
+          return res.status(400).json({
+              message : "No course Found !",
+             
+            })
+      }
+
+  }catch(error){
+    return res.json({
+        message : error
     })
-})
-adminRouter.get("/course",function(req,res){
-    res.json({
-        message : "admin get course endpoint"
-    })
+  }
+  
+       
 })
 
 

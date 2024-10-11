@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 // const jwt = require("jsonwebtoken");
 const  userRouter  = require("./routes/userRouter");
-const  courseRouter  = require("./routes/userRouter");
+const  courseRouter  = require("./routes/courseRouter");
 const adminRouter = require("./routes/adminRouter");
 const mongoose = require("mongoose");
 dotenv.config();
