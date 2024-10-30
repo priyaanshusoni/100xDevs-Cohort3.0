@@ -1,9 +1,10 @@
 
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 
-const Schema = mongoose.Schema;
 
+
+const Schema = mongoose.Schema // C++ class js class
 const ObjectId = Schema.Types.ObjectId;
 
 const UserSchema = new Schema({
@@ -39,9 +40,9 @@ const purchaseSchema = new Schema({
 
 })
 
-const UserModel = mongoose.model("User",UserSchema);
+const UserModel = mongoose.model("User",UserSchema); 
 const CourseModel = mongoose.model("Course",CourseSchema);
-const AdminModel = mongoose.model("Admin",adminSchema);
+const AdminModel = mongoose.model("Admin",adminSchema); 
 const PurchaseModel = mongoose.model("Purchase",purchaseSchema);
 
 
