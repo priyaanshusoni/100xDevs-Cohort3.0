@@ -5,7 +5,6 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 const DB_URL = process.env.DB_URL;
-console.log(PORT + DB_URL);
 const app = express();
 const userRouter = require("./routes/userRouter")
 const courseRouter = require("./routes/courseRouter")
@@ -15,18 +14,6 @@ app.use(express.json())
 app.use("/users",userRouter);
 app.use("/course", courseRouter);
 app.use("/admin",adminRouter);
-
-
-
-
-
-
-
-
-
-
-
-
 
 async function main() {
  await mongoose.connect(DB_URL);

@@ -1,3 +1,4 @@
+const { log } = require("console");
 const fs = require("fs");
 
 const contents = fs.readFileSync('a.txt', 'utf-8');
@@ -9,7 +10,7 @@ console.log(contents2);
 
 
 
-// fs library gives to type of functions -> read file function & read file sync function 
+// fs module gives to type of functions -> read file function & read file sync function 
 
 function sum(a,b){
     return a+b;
@@ -22,10 +23,14 @@ function mul(a,b){
 
 
 function op(a,b,op){
+    
 
     let ans = op(a,b);
     return ans;
 }
+
+
+
 
 console.log(op(5,6,sum));
 console.log(op(5,6,mul));

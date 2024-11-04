@@ -36,11 +36,18 @@ class Rectangle {
 // console.log('this in object method', person.getFullName());
 
 
-// const user = {
-//   name : "Priyanshu",
-//   f(){
-//     console.log(2*2);
-//   }
-// }
+const user = {
+  name : "Priyanshu",
+  f(){ 
+    console.log(2*2);
+  }
+}
 
-// console.log(user['f']());
+console.log(user['f']());
+
+
+
+
+
+
+
