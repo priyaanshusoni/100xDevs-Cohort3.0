@@ -9,7 +9,7 @@ function UseEffect() {
     }
 
     useEffect(()=>{
-        console.log("above setInterval : ");
+        console.log("above setInterval : "); // this weill be printed only once because this useEffect logic run on the firtst time when the component mounts
           setInterval(increaseCount,1000)
     },[])
 
@@ -17,6 +17,7 @@ function UseEffect() {
         console.log(`The count has been updated to ${count}`);
     }, [count])
 
+   
     // setInterval(increaseCount , 1000);
   return (
     <div>

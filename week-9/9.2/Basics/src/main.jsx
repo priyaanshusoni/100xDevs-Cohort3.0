@@ -7,6 +7,6 @@ import UseEffect2 from './UseEffect2.jsx'
 import CleanUp from './CleanUp.jsx'
 createRoot(document.getElementById('root')).render(
   
-    <CleanUp/>
+    <UseEffect/>
   
 )
