@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 
 let requestCount =0;
-
+ 
 function countIncreaser(){
     requestCount++;
     console.log(requestCount);
@@ -13,7 +13,7 @@ function countIncreaser(){
 
 // but when I use app.use() middleware then i don't need to pass middleware function in app.get() , this middleware will automatically be called whenever someone tries to hit any route on my HTTP server.
 
-
+ 
 
 
 app.get("/sum/:a/:b",countIncreaser,function(req,res){

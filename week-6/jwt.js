@@ -7,7 +7,7 @@ const value = {
     name : "priyanshu",
     accountNumber : 123123123
 }
-
+ 
 //jwt 
 
 const token = jwt.sign(value , "secret");
